@@ -9,7 +9,7 @@ Determiná que será impreso en la consola, sin ejecutar el código.
 
 ```javascript
 x = 1;
-var a = 5;
+var a = 5; 
 var b = 10;
 var c = function(a, b, c) {
   var x = 10;
@@ -24,18 +24,18 @@ var c = function(a, b, c) {
   f(a,b,c);
   console.log(b);
 }
-c(8,9,10);
-console.log(b);
-console.log(x);
+c(8,9,10); //Rpta: 10/8/8/9.//
+console.log(b); //Rpta: 10.//
+console.log(x); //Rpta : 1.//
 ```
 
 ```javascript
-console.log(bar);
-console.log(baz);
-foo();
-function foo() { console.log('Hola!'); }
-var bar = 1;
-baz = 2;
+console.log(bar); // Error//
+console.log(baz); //Error//
+foo(); // Esta llamando a la funcion  retorna Hola//
+function foo() { console.log('Hola!'); } // Definiendo la funcion//
+var bar = 1; // Se le asigna un valor a la variable, pero esta por debajo de la invocacion - error//
+baz = 2;// Se le asigna un valor a la variable, pero esta por debajo de la invocacion - error//
 ```
 
 ```javascript
@@ -43,7 +43,7 @@ var instructor = "Tony";
 if(true) {
     var instructor = "Franco";
 }
-console.log(instructor);
+console.log(instructor); // Al ser una variable var, el nuevo valir que se le asigna al instructor es global//
 ```
 
 ```javascript
@@ -56,6 +56,7 @@ console.log(instructor);
    }
 })();
 console.log(instructor);
+//Tony - Franco - Tony //
 ```
 
 ```javascript
@@ -69,28 +70,32 @@ if (true) {
 }
 console.log(instructor);
 console.log(pm);
+// The flash - Reverse flash - The flash - Franco // 
+//The flash (la variable instructor reasigno su valor a un contexto global)//
+//Reverse flash( Se le asigna el valor Reverse Flash por la variable let)//
+
 ```
 ### Coerción de Datos
 
 ¿Cuál crees que será el resultado de la ejecución de estas operaciones?:
 
 ```javascript
-6 / "3"
-"2" * "3"
-4 + 5 + "px"
-"$" + 4 + 5
-"4" - 2
-"4px" - 2
-7 / 0
-{}[0]
-parseInt("09")
-5 && 2
-2 && 5
-5 || 0
-0 || 5
-[3]+[3]-[10]
-3>2>1
-[] == ![]
+6 / "3" //js convierte el string "3" en un  numero//
+"2" * "3" // js convierte los string en numeros//
+4 + 5 + "px" //Empieza con numeros, primero suma y luego concatena// 
+"$" + 4 + 5 // Empiza con string, entonces va a concatenar//
+"4" - 2 // Convierte el string a numero//
+"4px" - 2 // NAN no definido//
+7 / 0 // Infinity //
+{}[0] // Un objeto vacio//
+parseInt("09") // Me devuelve el numero//
+5 && 2 // Devuelve el ultimo true //
+2 && 5 // Devuelve el ultimo true //
+5 || 0 // Devuelve el primer true //
+0 || 5 // Devuelve el primer true //
+[3]+[3]-[10] 
+3>2>1 // false //
+[] == ![] 
 ```
 
 > Si te quedó alguna duda repasá con [este artículo](http://javascript.info/tutorial/object-conversion).
@@ -112,6 +117,7 @@ function test() {
 }
 
 test();
+// undefined - 2 //
 ```
 
 Y el de este código? :
@@ -152,6 +158,8 @@ console.log(obj.prop.getFullname());
 var test = obj.prop.getFullname;
 
 console.log(test());
+//Aurelio De Rosa - Juan Perez //
+// En la primera ejecucion se llama al this que esta dentro de una funcion  y en la segunda ejecucion se llama al this que esta en el global//
 ```
 
 ### Event loop
@@ -167,4 +175,5 @@ function printing() {
 }
 
 printing();
+//Primero se ejecuta 1 - 4 luego undefined 3 - y por ultimo 2//
 ```
